@@ -77,18 +77,31 @@
     </select>
     <button onclick="pesanBuku()">Pesan</button>
   </section>
-
   <script src="script.js">
-    function pesanBuku() {
-  
+  let buku = [
+  {"nama": "sherlock", "jumlah":2},
+  {"nama": "lupin", "jumlah":2},
+  {"nama": "aladin", "jumlah":2},
+];
+function pesanBuku() {
+
   const jumlahBuku = document.getElementById("jumlah").value;
   const pilihanBuku = document.getElementById("buku").value;
-
   if (jumlahBuku === "") {
     alert("Jumlah buku tidak boleh kosong!");
     return;
   }
-  alert(`Anda telah memesan ${jumlahBuku} buku "${pilihanBuku}".`);
+  const bukuDipilih = buku.find(buku => buku.nama === pilihanBuku);
+ 
+  if (!bukuDipilih) {
+    alert("Buku tidak ditemukan!");
+    return;
+  }
+  if (jumlahBuku > bukuDipilih.jumlah) {
+    alert("Jumlah buku yang Anda inginkan tidak tersedia!");
+    return;
+  }
+  alert("Silahkan ambil buku Anda!");
 }
 
   </script>
