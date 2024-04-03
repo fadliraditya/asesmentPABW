@@ -1,27 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengembangan Aplikasi Berbasis Web - VSI2M2</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem; 
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .profile {
+            display: flex; 
+            align-items: center; /
+            margin-bottom: 2rem; 
+        }
+
+        .profile img {
+            margin-right: 1rem; 
+        }
+
+        .order-form {
+            border: 1px solid #ddd; 
+            padding: 1rem;
+            margin-bottom: 2rem; 
+        }
+
+        .order-form p {
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            background-color: #4CAF50; 
+            color: white;
+            padding: 0.5rem 1rem; /
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; }
+
+        button:hover {
+            background-color: #3e8e41; 
+        }
+    </style>
 </head>
 <body>
-    <h1>Profil Saya</h1>
-    <img src="foto.jpeg" alt="Foto Anda" width="200px">
-    <p>Nama: Muhammad Fadli Raditya</p>
-    <p>NIM: 6701220024 </p>
-    <p>Kelas: D3SI 46 04</p>
+    <header>
+        <h1>Profil Saya</h1>
+    </header>
+    <section class="profile">
+        <img src="foto.jpeg" alt="Foto Anda" width="200px">
+        <p>Nama: Muhammad Fadli Raditya</p>
+        <p>NIM: 6701220024</p>
+        <p>Kelas: D3SI 46 04</p>
+    </section>
 
     <h2>Pesan Buku</h2>
-    <p>Jumlah Buku:</p>
-    <input type="number" id="jumlah">
-    <p>Pilihan Buku:</p>
-    <select id="buku">
-        <option value="sherlock">Sherlock Holmes</option>
-        <option value="lupin">Arsène Lupin</option>
-        <option value="aladin">Aladin dan Lampu Ajaib</option>
-    </select>
-    <button onclick="pesanBuku()">Pesan</button>
+    <section class="order-form">
+        <p>Jumlah Buku:</p>
+        <input type="number" id="jumlah">
+        <p>Pilihan Buku:</p>
+        <select id="buku">
+            <option value="sherlock">Sherlock Holmes</option>
+            <option value="lupin">Arsène Lupin</option>
+            <option value="aladin">Aladin dan Lampu Ajaib</option>
+        </select>
+        <button onclick="pesanBuku()">Pesan</button>
+    </section>
 
     <script src="script.js"></script>
 </body>
