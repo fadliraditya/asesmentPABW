@@ -1,76 +1,97 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengembangan Aplikasi Berbasis Web - VSI2M2</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 2rem; 
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengembangan Aplikasi Berbasis Web - VSI2M2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem; /* Margin untuk seluruh body */
+    }
 
-        header {
-            text-align: center;
-        }
+    header {
+      text-align: center; /* Text di header rata tengah */
+    }
 
-        .profile {
-            display: flex; 
-            align-items: center; /
-            margin-bottom: 2rem; 
-        }
+    .profile {
+      display: flex; /* Profile ditampilkan dalam baris */
+      align-items: center; /* Teks dan gambar di profile sejajar vertikal */
+      margin-bottom: 2rem; /* Margin bawah profile */
+    }
 
-        .profile img {
-            margin-right: 1rem; 
-        }
+    .profile img {
+      margin-right: 1rem; /* Margin kanan gambar di profile */
+    }
 
-        .order-form {
-            border: 1px solid #ddd; 
-            padding: 1rem;
-            margin-bottom: 2rem; 
-        }
+    .profile p {
+      margin-bottom: 0.5rem; /* Margin bawah paragraf di profile */
+    }
 
-        .order-form p {
-            margin-bottom: 0.5rem;
-        }
+    .order-form {
+      border: 1px solid #ddd; /* Batas border formulir pemesanan */
+      padding: 1rem; /* Padding di dalam formulir pemesanan */
+      margin-bottom: 2rem; /* Margin bawah formulir pemesanan */
+    }
 
-        button {
-            background-color: #4CAF50; 
-            color: white;
-            padding: 0.5rem 1rem; /
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; }
+    .order-form p {
+      margin-bottom: 0.5rem; /* Margin bawah paragraf di formulir pemesanan */
+    }
 
-        button:hover {
-            background-color: #3e8e41; 
-        }
-    </style>
+    button {
+      background-color: #4CAF50; /* Warna background button */
+      color: white; /* Warna teks button */
+      padding: 0.5rem 1rem; /* Padding button */
+      border: none; /* Hilangkan border button */
+      border-radius: 5px; /* Bulatkan sudut button */
+      cursor: pointer; /* Tunjuk tangan berubah saat hover */
+    }
+
+    button:hover {
+      background-color: #3e8e41; /* Warna background button saat hover */
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Profil Saya</h1>
-    </header>
-    <section class="profile">
-        <img src="foto.jpeg" alt="Foto Anda" width="200px">
-        <p>Nama: Muhammad Fadli Raditya</p>
-        <p>NIM: 6701220024</p>
-        <p>Kelas: D3SI 46 04</p>
-    </section>
+  <header>
+    <h1>Profil Saya</h1>
+  </header>
+  <section class="profile">
+    <img src="images/foto.jpeg" alt="Foto Anda" width="200px">
+    <div class="info">
+      <p>Nama: Muhammad Fadli Raditya</p>
+      <p>NIM: 6701220024</p>
+      <p>Kelas: D3SI 46 04</p>
+    </div>
+  </section>
 
-    <h2>Pesan Buku</h2>
-    <section class="order-form">
-        <p>Jumlah Buku:</p>
-        <input type="number" id="jumlah">
-        <p>Pilihan Buku:</p>
-        <select id="buku">
-            <option value="sherlock">Sherlock Holmes</option>
-            <option value="lupin">Arsène Lupin</option>
-            <option value="aladin">Aladin dan Lampu Ajaib</option>
-        </select>
-        <button onclick="pesanBuku()">Pesan</button>
-    </section>
+  <h2>Pesan Buku</h2>
+  <section class="order-form">
+    <p>Jumlah Buku:</p>
+    <input type="number" id="jumlah">
+    <p>Pilihan Buku:</p>
+    <select id="buku">
+      <option value="sherlock">Sherlock Holmes</option>
+      <option value="lupin">Arsène Lupin</option>
+      <option value="aladin">Aladin dan Lampu Ajaib</option>
+    </select>
+    <button onclick="pesanBuku()">Pesan</button>
+  </section>
 
-    <script src="script.js"></script>
+  <script src="script.js">
+    function pesanBuku() {
+  
+  const jumlahBuku = document.getElementById("jumlah").value;
+  const pilihanBuku = document.getElementById("buku").value;
+
+  if (jumlahBuku === "") {
+    alert("Jumlah buku tidak boleh kosong!");
+    return;
+  }
+  alert(`Anda telah memesan ${jumlahBuku} buku "${pilihanBuku}".`);
+}
+
+  </script>
+
 </body>
 </html>
