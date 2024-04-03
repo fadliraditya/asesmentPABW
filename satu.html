@@ -7,48 +7,48 @@
   <style>
     body {
       font-family: sans-serif;
-      margin: 2rem; /* Margin untuk seluruh body */
+      margin: 2rem;
     }
 
     header {
-      text-align: center; /* Text di header rata tengah */
+      text-align: center;
     }
 
     .profile {
-      display: flex; /* Profile ditampilkan dalam baris */
-      align-items: center; /* Teks dan gambar di profile sejajar vertikal */
-      margin-bottom: 2rem; /* Margin bawah profile */
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
     }
 
     .profile img {
-      margin-right: 1rem; /* Margin kanan gambar di profile */
+      margin-right: 1rem;
     }
 
     .profile p {
-      margin-bottom: 0.5rem; /* Margin bawah paragraf di profile */
+      margin-bottom: 0.5rem;
     }
 
     .order-form {
-      border: 1px solid #ddd; /* Batas border formulir pemesanan */
-      padding: 1rem; /* Padding di dalam formulir pemesanan */
-      margin-bottom: 2rem; /* Margin bawah formulir pemesanan */
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-bottom: 2rem;
     }
 
     .order-form p {
-      margin-bottom: 0.5rem; /* Margin bawah paragraf di formulir pemesanan */
+      margin-bottom: 0.5rem;
     }
 
     button {
-      background-color: #4CAF50; /* Warna background button */
-      color: white; /* Warna teks button */
-      padding: 0.5rem 1rem; /* Padding button */
-      border: none; /* Hilangkan border button */
-      border-radius: 5px; /* Bulatkan sudut button */
-      cursor: pointer; /* Tunjuk tangan berubah saat hover */
+      background-color: #4CAF50;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     button:hover {
-      background-color: #3e8e41; /* Warna background button saat hover */
+      background-color: #3e8e41;
     }
   </style>
 </head>
@@ -71,48 +71,59 @@
     <input type="number" id="jumlah">
     <p>Pilihan Buku:</p>
     <select id="buku">
-        <option value="">-</option>
-        <option value="sherlock">Sherlock Holmes</option>
-        <option value="lupin">Arsene Lupin</option>
-        <option value="aladin">Aladin</option>
+      <option value="">-- Pilih Buku --</option>
+      <option value="sherlock">Sherlock Holmes</option>
+      <option value="lupin">Arsène Lupin</option>
+      <option value="aladin">Aladin dan Lampu Ajaib</option>
     </select>
-    <button onclick="pesanBuku()">Pesan</button>
+    <button onclick="checkAvailability()">Pesan</button>
   </section>
-   <script>
-        let buku = [
-            { "nama": "sherlock", "jumlah": 2 },
-            { "nama": "lupin", "jumlah": 2 },
-            { "nama": "aladin", "jumlah": 2 },
-        ];
 
-        function submitForm() {
-            const jumlah = document.getElementById('jumlah').value;
-            const karakter = document.getElementById('karakter').value;
-
-            alert(`Jumlah: ${jumlah}, Karakter Favorit: ${karakter}`);
-            const bookIndex = buku.findIndex(book => book.nama === karakter);
-
-            if (jumlah === '' || karakter === '') {
-                alert('Jumlah dan karakter tidak boleh kosong!');
-                return;
-            }
-            if (bookIndex !== -1) {
-                buku[bookIndex].jumlah += parseInt(jumlah);
-
-                alert(`Jumlah ${buku[bookIndex].nama} diperbarui menjadi ${buku[bookIndex].jumlah}`);
-                if (jumlah > buku[bookIndex].jumlah) {
-                    alert(`Maaf, jumlah ${buku[bookIndex].nama} yang tersedia hanya ${buku[bookIndex].jumlah}`);
-                } else {
-                    buku[bookIndex].jumlah += jumlah;
-                    alert(`Jumlah ${buku[bookIndex].nama} diperbarui menjadi ${buku[bookIndex].jumlah}`);
-                    alert(`silahkan ambil buku anda`);
-                }
-            } else {
-                alert(`Buku ${karakter} tidak ditemukan`);
-            }
+  <script>
+    let buku = [
+      {"nama": "sherlock", "jumlah": 2},
+      {"nama": "lupin", "jumlah": 2},
+      {"nama": "aladin", "jumlah": 2},
+    ];
+  
+    function checkAvailability() {
+      // Mendapatkan nilai dari input dan select
+      const jumlah = parseInt(document.getElementById("jumlah").value);
+      const pilihan = document.getElementById("buku").value;
+  
+      // Validasi input
+      if (isNaN(jumlah) || jumlah <= 0) {
+        alert("Mohon masukkan jumlah buku yang ingin dipinjam.");
+        return;
+      }
+  
+      // Pencarian buku
+      let bukuDitemukan = false;
+      let jumlahBukuDitemukan = 0;
+      for (let i = 0; i < buku.length; i++) {
+        if (buku[i].nama === pilihan.toLowerCase()) {
+          bukuDitemukan = true;
+          jumlahBukuDitemukan = buku[i].jumlah;
+          break;
         }
-    </script>
+      }
+  
+      // Pesan error jika buku tidak ditemukan
+      if (!bukuDitemukan) {
+        alert("Buku tidak ditemukan.");
+        return;
+      }
+  
+      // Pengecekan jumlah buku yang tersedia
+      if (jumlah > jumlahBukuDitemukan) {
+        alert("Jumlah buku yang Anda inginkan tidak tersedia.");
+        return;
+      }
+  
+      // Pesan jika jumlah buku tersedia
+      alert("Silahkan ambil buku Anda!");
+    }
   </script>
-
+  
 </body>
 </html>
